@@ -90,4 +90,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.active_record.database_selector = { delay: 2.seconds }
+  config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::database_resolver
+  config.active_record.database_resoler_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 end
